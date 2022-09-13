@@ -13,7 +13,7 @@ export const DayLink = styled(`a`, {
   fontSize: '$6',
   transition: 'all 0.2s ease-in-out',
   outline: 'solid 2px transparent',
-  borderRadius: '$1',
+  borderRadius: '$5',
   '&:hover, &:focus': {
     outlineColor: 'white',
   },
@@ -22,12 +22,13 @@ export const DayLink = styled(`a`, {
     width: '$10',
     fontSize: '$7',
     outline: 'solid 4px transparent',
+    borderRadius: '$6',
   },
   '@bp3': {
     height: '$11',
     width: '$11',
     fontSize: '$8',
-    borderRadius: '$2',
+    borderRadius: '$7',
   },
   variants: {
     disabled: {
@@ -39,12 +40,12 @@ export const DayLink = styled(`a`, {
     },
     special: {
       true: {
-        boxShadow: `inset 0px 0px 0px 6px ${config.theme.colors.red1}99`,
+        boxShadow: `inset 0px 0px 0px 3px ${config.theme.colors.blue4}`,
         '@bp1': {
-          boxShadow: `inset 0px 0px 0px 9px ${config.theme.colors.red1}99`,
+          boxShadow: `inset 0px 0px 0px 4px ${config.theme.colors.blue4}`,
         },
         '@bp3': {
-          boxShadow: `inset 0px 0px 0px 12px ${config.theme.colors.red1}99`,
+          boxShadow: `inset 0px 0px 0px 6px ${config.theme.colors.blue4}`,
         },
       },
     },
@@ -61,19 +62,5 @@ export const DayLink = styled(`a`, {
       },
     },
   },
-  compoundVariants: [
-    {
-      disabled: false,
-      special: true,
-      css: {
-        boxShadow: `inset 0px 0px 0px 6px ${config.theme.colors.red1}BB`,
-        '@bp1': {
-          boxShadow: `inset 0px 0px 0px 9px ${config.theme.colors.red1}BB`,
-        },
-        '@bp3': {
-          boxShadow: `inset 0px 0px 0px 12px ${config.theme.colors.red1}BB`,
-        },
-      },
-    },
-  ],
+  compoundVariants: [],
 });
