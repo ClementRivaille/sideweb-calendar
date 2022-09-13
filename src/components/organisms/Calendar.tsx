@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import { Link } from 'react-router-dom';
 import { Box } from '../atoms/Box';
 import { DayLink } from '../atoms/DayLink';
 
@@ -26,6 +27,8 @@ export const Calendar: FunctionComponent = () => {
           disabled={day > 10}
           special={day % 5 === 0}
           active={day === 10}
+          as={Link}
+          to={`/day/${day}`}
         >
           {day}
         </DayLink>

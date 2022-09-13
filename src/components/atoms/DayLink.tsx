@@ -1,4 +1,4 @@
-import { config, styled, theme } from '../../style/stitches.config';
+import { config, styled } from '../../style/stitches.config';
 
 export const DayLink = styled(`a`, {
   display: 'flex',
@@ -14,8 +14,11 @@ export const DayLink = styled(`a`, {
   transition: 'all 0.2s ease-in-out',
   outline: 'solid 2px transparent',
   borderRadius: '$5',
+  color: 'white',
   '&:hover, &:focus': {
     outlineColor: 'white',
+    outlineOffset: '0px',
+    border: 'none',
   },
   '@bp1': {
     height: '$10',
