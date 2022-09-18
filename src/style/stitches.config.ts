@@ -19,6 +19,7 @@ export const {
       blue4: '#79D3F3',
       red1: '#FF0054',
       jonquil: '#F0C808',
+      white: '#ffffff',
     },
     fonts: {
       untitled: 'Untitled Sans, -apple-system, system-ui, sans-serif',

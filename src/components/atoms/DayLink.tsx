@@ -14,9 +14,9 @@ export const DayLink = styled(`a`, {
   transition: 'all 0.2s ease-in-out',
   outline: 'solid 2px transparent',
   borderRadius: '$5',
-  color: 'white',
+  color: '$white',
   '&:hover, &:focus': {
-    outlineColor: 'white',
+    outlinecolor: '$white',
     outlineOffset: '0px',
     border: 'none',
   },

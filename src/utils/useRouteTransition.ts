@@ -5,6 +5,10 @@ import { styled } from '@stitches/react';
 
 type Stage = 'fadeIn' | 'fadeOut';
 
+export interface RedirectState {
+  redirect?: boolean;
+}
+
 const fadeIn = keyframes({
   '0%': {
     opacity: 0,
@@ -44,10 +48,14 @@ export const useRouteTransition = () => {
   const [stage, setStage] = useState<Stage>('fadeIn');
 
   useEffect(() => {
-    if (location !== displayedLocation) {
-      setStage('fadeOut');
+    if (location.pathname !== displayedLocation.pathname) {
+      if ((location.state as RedirectState)?.redirect) {
+        setDisplayedLocation(location);
+      } else {
+        setStage('fadeOut');
+      }
     }
-  }, [location, displayedLocation]);
+  }, [location.pathname, displayedLocation.pathname]);
 
   const onAnimationEnd = useCallback(() => {
     if (stage === 'fadeOut') {

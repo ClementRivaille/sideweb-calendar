@@ -12,7 +12,10 @@ function App() {
         <Routes location={displayedLocation}>
           <Route path="/" element={<Home />} />
           <Route path="/day/:id" element={<Day />} />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route
+            path="*"
+            element={<Navigate to="/" state={{ redirect: true }} />}
+          />
         </Routes>
       </FadeContent>
     </div>
