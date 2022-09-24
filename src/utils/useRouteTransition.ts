@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { keyframes } from '../style/stitches.config';
 import { styled } from '@stitches/react';
@@ -43,6 +43,7 @@ export const FadeContent = styled('div', {
 
 export const useRouteTransition = () => {
   const location = useLocation();
+  const ref = useRef<HTMLDivElement | null>(null);
 
   const [displayedLocation, setDisplayedLocation] = useState(location);
   const [stage, setStage] = useState<Stage>('fadeIn');
@@ -61,6 +62,9 @@ export const useRouteTransition = () => {
     if (stage === 'fadeOut') {
       setDisplayedLocation(location);
       setStage('fadeIn');
+      if (ref.current) {
+        ref.current.scrollTo(0, 0);
+      }
     }
   }, [stage]);
 
@@ -68,6 +72,7 @@ export const useRouteTransition = () => {
     contentProps: {
       stage,
       onAnimationEnd,
+      ref,
     },
     displayedLocation,
   };

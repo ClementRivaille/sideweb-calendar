@@ -1,6 +1,6 @@
 export interface CalendarEntry {
   title: string;
-  link: string;
+  link?: string;
   description: string[];
   imgUrl?: string;
   videoUrl?: string;

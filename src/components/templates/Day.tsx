@@ -2,6 +2,7 @@ import React, { useEffect, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { calendarData } from '../../utils/calendarData';
 import { Description } from '../atoms/Description';
+import { EmbeddedVideo } from '../atoms/EmbeddedVideo';
 import { EntryImg } from '../atoms/EntryImg';
 import { EntryLink } from '../atoms/EntryLink';
 import { Main } from '../atoms/Main';
@@ -35,14 +36,17 @@ export const Day = () => {
         <>
           <EntryHeader>{entry.title}</EntryHeader>
           {entry.imgUrl && <EntryImg src={entry.imgUrl} alt="kitties" />}
+          {entry.videoUrl && <EmbeddedVideo url={entry.videoUrl} />}
           <Description>
             {entry.description.map((paragraph, idx) => (
               <div key={idx}>{paragraph}</div>
             ))}
           </Description>
-          <EntryLink href={entry.link} target="_blank">
-            Link
-          </EntryLink>
+          {entry.link && (
+            <EntryLink href={entry.link} target="_blank">
+              Link
+            </EntryLink>
+          )}
         </>
       )}
     </Main>
