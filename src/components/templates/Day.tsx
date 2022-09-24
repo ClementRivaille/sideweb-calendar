@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { calendarData } from '../../utils/calendarData';
-import { Box } from '../atoms/Box';
 import { Description } from '../atoms/Description';
 import { EntryImg } from '../atoms/EntryImg';
+import { EntryLink } from '../atoms/EntryLink';
 import { Main } from '../atoms/Main';
 import { EntryHeader } from '../molecules/EntryHeader';
 
@@ -40,14 +40,9 @@ export const Day = () => {
               <div key={idx}>{paragraph}</div>
             ))}
           </Description>
-          <Box
-            as={'a'}
-            href={entry.link}
-            target="_blank"
-            css={{ color: '$white' }}
-          >
+          <EntryLink href={entry.link} target="_blank">
             Link
-          </Box>
+          </EntryLink>
         </>
       )}
     </Main>
