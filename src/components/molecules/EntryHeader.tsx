@@ -12,6 +12,11 @@ const HeaderBackground = styled('div', {
   alignItems: 'center',
   gap: '$4',
   borderRadius: '0px 0px $4 $4',
+  position: 'absolute',
+  top: 0,
+  '@bp2': {
+    position: 'unset',
+  },
   '@bp3': {
     padding: '$3 $4',
     minWidth: '50vw',

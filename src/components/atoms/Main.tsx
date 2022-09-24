@@ -15,7 +15,6 @@ export const Main = styled('main', {
     padding: '$5 $8',
   },
   '@bp3': {
-    gap: '$8',
     padding: '$6 $11',
   },
 });

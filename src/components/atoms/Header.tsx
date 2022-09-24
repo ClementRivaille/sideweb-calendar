@@ -14,7 +14,11 @@ export const Header = styled('h1', {
   },
   variants: {
     level: {
-      [1]: {},
+      [1]: {
+        '@bp3': {
+          marginBottom: '$5',
+        },
+      },
       [2]: {
         textAlign: 'left',
         fontWeight: 'bold',

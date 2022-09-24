@@ -6,8 +6,11 @@ export const globalStyle = globalCss({
     minHeight: '100%',
     backgroundColor: '$blue1',
     color: '$white',
-    fontSize: '$4',
+    fontSize: '$3',
     fontFamily: 'sans-serif',
+    '@bp1': {
+      fontSize: '$4',
+    },
   },
   '*': {
     boxSizing: 'border-box',

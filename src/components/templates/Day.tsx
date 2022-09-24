@@ -2,6 +2,8 @@ import React, { useEffect, useMemo } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { calendarData } from '../../utils/calendarData';
 import { Box } from '../atoms/Box';
+import { Description } from '../atoms/Description';
+import { EntryImg } from '../atoms/EntryImg';
 import { Main } from '../atoms/Main';
 import { EntryHeader } from '../molecules/EntryHeader';
 
@@ -20,23 +22,24 @@ export const Day = () => {
   });
 
   return (
-    <Main css={{ maxHeight: '100vh', paddingTop: 0 }}>
+    <Main
+      css={{
+        paddingTop: '$8',
+        '@bp2': {
+          paddingTop: 0,
+          maxHeight: '100vh',
+        },
+      }}
+    >
       {entry && (
         <>
           <EntryHeader>{entry.title}</EntryHeader>
-          {entry.imgUrl && (
-            <Box
-              as="img"
-              src={entry.imgUrl}
-              alt="kitties"
-              css={{ minHeight: '100px' }}
-            />
-          )}
-          <Box css={{ overflowY: 'auto' }}>
+          {entry.imgUrl && <EntryImg src={entry.imgUrl} alt="kitties" />}
+          <Description>
             {entry.description.map((paragraph, idx) => (
               <div key={idx}>{paragraph}</div>
             ))}
-          </Box>
+          </Description>
           <Box
             as={'a'}
             href={entry.link}
