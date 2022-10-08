@@ -1,10 +1,12 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
+import { useStore } from '../../model/store';
 import { Box } from '../atoms/Box';
 import { DayLink } from '../atoms/DayLink';
 
 export const Calendar: FunctionComponent = () => {
-  const days = [...Array(31)].map((_, i) => i + 1);
+  const { calendar, isDayUnlocked, hasGift, isToday } = useStore();
+  const days = Object.keys(calendar);
   return (
     <Box
       css={{
@@ -24,9 +26,9 @@ export const Calendar: FunctionComponent = () => {
       {days.map((day) => (
         <DayLink
           key={day}
-          disabled={day > 10}
-          special={day % 5 === 0}
-          active={day === 10}
+          disabled={!isDayUnlocked(day)}
+          special={hasGift(day) && (!isDayUnlocked(day) || isToday(day))}
+          active={isToday(day)}
           as={Link}
           to={`/day/${day}`}
         >

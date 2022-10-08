@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { calendarData } from '../../utils/calendarData';
+import { useStore } from '../../model/store';
 import { Description } from '../atoms/Description';
 import { EmbeddedVideo } from '../atoms/EmbeddedVideo';
 import { EntryImg } from '../atoms/EntryImg';
@@ -11,13 +11,14 @@ import { EntryHeader } from '../molecules/EntryHeader';
 export const Day = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { getDay, isDayUnlocked } = useStore();
 
   const entry = useMemo(() => {
-    return (id && calendarData[id]) || null;
+    return (id && getDay(id)) || null;
   }, [id]);
 
   useEffect(() => {
-    if (id && !entry) {
+    if (id && (!entry || !isDayUnlocked(id))) {
       navigate('/', { state: { redirect: true } });
     }
   });
@@ -44,7 +45,7 @@ export const Day = () => {
           </Description>
           {entry.link && (
             <EntryLink href={entry.link} target="_blank">
-              Link
+              Lien
             </EntryLink>
           )}
         </>

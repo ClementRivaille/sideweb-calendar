@@ -16,7 +16,7 @@ export const DayLink = styled(`a`, {
   borderRadius: '$5',
   color: '$white',
   '&:hover, &:focus': {
-    outlinecolor: '$white',
+    outlineColor: '$white',
     outlineOffset: '0px',
     border: 'none',
   },

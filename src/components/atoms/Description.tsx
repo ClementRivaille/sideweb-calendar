@@ -20,5 +20,6 @@ export const Description = styled('div', {
   },
   '@bp3': {
     padding: '$3',
+    fontSize: '$4b',
   },
 });
