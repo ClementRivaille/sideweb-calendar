@@ -69,6 +69,7 @@ export const {
       7: '28px',
       8: '36px',
       9: '60px',
+      10: '80px',
     },
     radii: {
       1: '4px',
@@ -94,5 +95,6 @@ export const {
     bp2: '(min-width: 900px)',
     bp3: '(min-width: 1400px)',
     hover: '(any-hover: hover)',
+    'reduced-motion': '(prefers-reduced-motion: reduce)',
   },
 });

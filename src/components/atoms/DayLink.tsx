@@ -10,7 +10,8 @@ export const DayLink = styled(`a`, {
   justifyContent: 'center',
   alignItems: 'center',
   textDecoration: 'none',
-  fontSize: '$6',
+  fontFamily: 'ldcBlack',
+  fontSize: '$7',
   transition: 'all 0.2s ease-in-out',
   outline: 'solid 2px transparent',
   borderRadius: '$5',
@@ -23,14 +24,14 @@ export const DayLink = styled(`a`, {
   '@bp1': {
     height: '$10',
     width: '$10',
-    fontSize: '$7',
+    fontSize: '$8',
     outline: 'solid 4px transparent',
     borderRadius: '$6',
   },
   '@bp3': {
     height: '$11',
     width: '$11',
-    fontSize: '$8',
+    fontSize: '$9',
     borderRadius: '$7',
   },
   variants: {
@@ -55,12 +56,12 @@ export const DayLink = styled(`a`, {
     active: {
       true: {
         fontWeight: 'bold',
-        textShadow: '2px 2px 2px black',
+        textShadow: '3px 3px black',
         '@bp1': {
-          textShadow: '3px 3px 2px black',
+          textShadow: '4px 4px black',
         },
         '@bp3': {
-          textShadow: '4px 4px 2px black',
+          textShadow: '5px 5px black',
         },
       },
     },

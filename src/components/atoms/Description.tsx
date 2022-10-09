@@ -5,14 +5,15 @@ export const Description = styled('div', {
   backgroundColor: '$blue2',
   color: '$white',
   padding: '$2 $3',
-  fontSize: '$3',
-  fontFamily: 'sans-serif',
+  fontFamily: 'ataristocrat',
+  lineHeight: '0.8em',
+  fontSize: '$5',
   display: 'flex',
   flexDirection: 'column',
   gap: '$2',
   width: '100vw',
   '@bp1': {
-    fontSize: '$4',
+    fontSize: '$6',
     padding: '$4',
     gap: '$3',
     width: 'auto',
@@ -20,6 +21,6 @@ export const Description = styled('div', {
   },
   '@bp3': {
     padding: '$3',
-    fontSize: '$4b',
+    fontSize: '$7',
   },
 });

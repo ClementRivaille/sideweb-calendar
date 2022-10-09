@@ -6,12 +6,14 @@ export const EntryLink = styled('a', {
   border: 'dashed 2px $white',
   color: '$white',
   textDecoration: 'none',
-  fontWeight: 'bold',
-  fontSize: '$4',
+  textShadow: '2px 2px black',
+  fontFamily: 'ataristocrat',
+  textTransform: 'uppercase',
+  fontSize: '$6',
   '@bp1': {
-    fontSize: '$5',
+    fontSize: '$7',
   },
   '@bp3': {
-    fontSize: '$6',
+    fontSize: '$8',
   },
 });
