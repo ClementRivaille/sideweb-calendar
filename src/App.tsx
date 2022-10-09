@@ -1,5 +1,4 @@
-import React from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import React, { Navigate, Route, Routes } from 'react-router-dom';
 import { Day } from './components/templates/Day';
 import { Home } from './components/templates/Home';
 import { StoreProvider } from './model/store';

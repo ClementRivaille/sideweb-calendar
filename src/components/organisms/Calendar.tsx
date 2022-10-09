@@ -5,8 +5,7 @@ import { Box } from '../atoms/Box';
 import { DayLink } from '../atoms/DayLink';
 
 export const Calendar: FunctionComponent = () => {
-  const { calendar, isDayUnlocked, hasGift, isToday } = useStore();
-  const days = Object.keys(calendar);
+  const { days, isDayUnlocked, hasGift, isToday } = useStore();
   return (
     <Box
       css={{

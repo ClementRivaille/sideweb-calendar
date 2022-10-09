@@ -5,8 +5,8 @@ import React, {
   useContext,
   useMemo,
 } from 'react';
-import { calendarData } from '../utils/calendarData';
-import { Calendar, CalendarEntry } from './calendar';
+import { decrypt, ENCRYPTED_CALENDAR } from '../utils/encryption';
+import { CalendarEntry } from './calendar';
 
 // const TARGET_MONT = 11;
 const TARGET_MONT = 9;
@@ -14,7 +14,7 @@ const TARGET_MONT = 9;
 const GIFT_DAYS = ['4', '11', '18', '25', '31'];
 
 interface Store {
-  calendar: Calendar;
+  days: string[];
   isDayUnlocked: (day: string) => boolean;
   isToday: (day: string) => boolean;
   hasGift: (day: string) => boolean;
@@ -29,7 +29,7 @@ interface Props {
 
 export const StoreProvider: FunctionComponent<Props> = ({ children }) => {
   const today = new Date();
-  const calendar = calendarData;
+  const calendar = decrypt(ENCRYPTED_CALENDAR);
 
   const isDayUnlocked = (day: string) => {
     const dayValue = parseInt(day, 10);
@@ -47,7 +47,7 @@ export const StoreProvider: FunctionComponent<Props> = ({ children }) => {
 
   const store = useMemo<Store>(
     () => ({
-      calendar,
+      days: Object.keys(calendar),
       isDayUnlocked,
       getDay,
       isToday,
