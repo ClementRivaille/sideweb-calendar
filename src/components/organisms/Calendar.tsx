@@ -30,6 +30,7 @@ export const Calendar: FunctionComponent = () => {
           active={isToday(day)}
           as={Link}
           to={`/day/${day}`}
+          tabIndex={!isDayUnlocked(day) ? -1 : undefined}
         >
           {day}
         </DayLink>
