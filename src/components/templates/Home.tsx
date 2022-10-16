@@ -11,7 +11,7 @@ export function Home() {
   return (
     <Box css={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <Main css={{ flex: 1 }}>
-        <Header>{`Calendrier de l'Avent Side Web`}</Header>
+        <Header>Le Calendrier Side Web</Header>
         <ToolBar>
           <IconSwitch icon="gift" />
           <IconSwitch icon="gift" disabled />

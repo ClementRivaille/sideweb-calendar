@@ -1,4 +1,3 @@
-import React from 'react';
 import { styled } from '../../style/stitches.config';
 
 export const ToolBar = styled('div', {
