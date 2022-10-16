@@ -2,7 +2,8 @@
 import { ComponentProps } from '@stitches/react';
 import React from 'react';
 import { ReactComponent as CloseSvg } from '../../assets/icons/close.svg';
-import { config, styled, theme } from '../../style/stitches.config';
+import { styled } from '../../style/stitches.config';
+import { Icon } from './Icons';
 
 const ButtonIcon = styled('button', {
   background: 'none',
@@ -12,19 +13,10 @@ const ButtonIcon = styled('button', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  color: '$white',
   ':focus-visible': {
     outline: 'solid 2px $white',
     outlineOffset: 0,
-  },
-});
-
-const StyledIcon = styled(CloseSvg, {
-  color: '$white',
-  height: '$5',
-  width: '$5',
-  '@bp2': {
-    height: '$6',
-    width: '$6',
   },
 });
 
@@ -46,7 +38,7 @@ export function CloseButton<As extends AsType = undefined>(
 ) {
   return (
     <ButtonIcon {...props} aria-label="Retour">
-      <StyledIcon />
+      <Icon name="close" />
     </ButtonIcon>
   );
 }
