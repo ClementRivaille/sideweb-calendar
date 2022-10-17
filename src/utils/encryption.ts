@@ -6,7 +6,6 @@ const KEY =
 
 export function decrypt(hash: string): Calendar {
   const bytes = CryptoJS.AES.decrypt(hash, KEY);
-  console.log(bytes.toString(CryptoJS.enc.Utf8));
   return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
 }
 

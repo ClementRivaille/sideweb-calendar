@@ -4,19 +4,14 @@ import { Main } from '../atoms/Main';
 import { Header } from '../atoms/Header';
 import { Footer } from '../molecules/Footer';
 import { Box } from '../atoms/Box';
-import { ToolBar } from '../atoms/ToolBar';
-import { IconSwitch } from '../atoms/IconSwitch';
+import { EffectsControls } from '../organisms/EffectsControls';
 
 export function Home() {
   return (
     <Box css={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <Main css={{ flex: 1 }}>
         <Header>Le Calendrier Side Web</Header>
-        <ToolBar>
-          <IconSwitch icon="gift" />
-          <IconSwitch icon="gift" disabled />
-          <IconSwitch icon="gift" checked />
-        </ToolBar>
+        <EffectsControls />
         <Calendar />
       </Main>
       <Footer />

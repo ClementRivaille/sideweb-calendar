@@ -4,21 +4,28 @@ import React, {
   ReactNode,
   useContext,
   useMemo,
+  useState,
 } from 'react';
 import { decrypt, ENCRYPTED_CALENDAR } from '../utils/encryption';
 import { CalendarEntry } from './calendar';
+import { Effects, GIFT_DAYS } from './effects';
 
 // const TARGET_MONT = 11;
 const TARGET_MONT = 9;
 
-const GIFT_DAYS = ['4', '11', '18', '25', '31'];
-
+interface EffectState {
+  opened: boolean;
+  enabled: boolean;
+}
 interface Store {
   days: string[];
+  effects: { [key in Effects]: EffectState };
   isDayUnlocked: (day: string) => boolean;
   isToday: (day: string) => boolean;
   hasGift: (day: string) => boolean;
   getDay: (day: string) => CalendarEntry | undefined;
+  openEffect: (effect: Effects) => void;
+  toggleEffect: (effect: Effects) => void;
 }
 
 const StoreContext = createContext<Store>({} as Store);
@@ -41,19 +48,49 @@ export const StoreProvider: FunctionComponent<Props> = ({ children }) => {
   const getDay = (day: string) =>
     isDayUnlocked(day) ? calendar[day] : undefined;
 
-  const isToday = (day: string) => day === `${today.getDate()}`;
+  const isToday = (day: string) =>
+    TARGET_MONT === today.getMonth() && day === `${today.getDate()}`;
 
-  const hasGift = (day: string) => GIFT_DAYS.includes(day);
+  const hasGift = (day: string) => GIFT_DAYS.some((gift) => gift.day === day);
+
+  const [effects, setEffects] = useState<Store['effects']>(
+    GIFT_DAYS.reduce(
+      (values, gift) => ({
+        ...values,
+        [gift.effect]: {
+          enabled: false,
+          opened: isDayUnlocked(gift.day) && !isToday(gift.day),
+        } as EffectState,
+      }),
+      {} as Store['effects']
+    )
+  );
+
+  const openEffect = (name: Effects) =>
+    setEffects((values) => ({
+      ...values,
+      [name]: { ...values[name], open: true },
+    }));
+
+  const toggleEffect = (name: Effects) => {
+    setEffects((values) => ({
+      ...values,
+      [name]: { ...values[name], enabled: !values[name].enabled },
+    }));
+  };
 
   const store = useMemo<Store>(
     () => ({
       days: Object.keys(calendar),
+      effects,
       isDayUnlocked,
       getDay,
       isToday,
       hasGift,
+      openEffect,
+      toggleEffect,
     }),
-    []
+    [effects]
   );
 
   return (
