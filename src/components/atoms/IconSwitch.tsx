@@ -35,10 +35,23 @@ const StyledLabel = styled('label', {
 
 type Props = {
   icon: IconName;
+  label: string;
 } & ComponentProps<typeof StyledCheckbox>;
 
-export const IconSwitch = ({ icon, disabled, checked, ...props }: Props) => (
-  <StyledLabel disabled={disabled} checked={checked}>
+export const IconSwitch = ({
+  icon,
+  label,
+  disabled,
+  checked,
+  className,
+  ...props
+}: Props) => (
+  <StyledLabel
+    disabled={disabled}
+    checked={checked}
+    aria-label={label}
+    className={className}
+  >
     <Icon name={icon} />
     <StyledCheckbox
       type="checkbox"

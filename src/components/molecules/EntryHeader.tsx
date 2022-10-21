@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { styled } from '../../style/stitches.config';
-import { CloseButton } from '../atoms/CloseButton';
+import { IconButton } from '../atoms/IconButton';
 import { Header } from '../atoms/Header';
 
 const HeaderBackground = styled('div', {
@@ -37,7 +37,7 @@ export const EntryHeader: FunctionComponent<Props> = ({ children }) => {
   return (
     <HeaderBackground>
       <Header level={2}>{children}</Header>
-      <CloseButton as={Link} to="/" />
+      <IconButton as={Link} to="/" label="retour" icon="close" />
     </HeaderBackground>
   );
 };

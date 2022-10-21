@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types */
 import { ComponentProps } from '@stitches/react';
 import React from 'react';
-import { ReactComponent as CloseSvg } from '../../assets/icons/close.svg';
 import { styled } from '../../style/stitches.config';
-import { Icon } from './Icons';
+import { Icon, IconName } from './Icons';
 
-const ButtonIcon = styled('button', {
+const StyledButton = styled('button', {
   background: 'none',
   padding: 0,
   border: 'none',
@@ -14,6 +13,7 @@ const ButtonIcon = styled('button', {
   alignItems: 'center',
   justifyContent: 'center',
   color: '$white',
+  cursor: 'pointer',
   ':focus-visible': {
     outline: 'solid 2px $white',
     outlineOffset: 0,
@@ -22,8 +22,8 @@ const ButtonIcon = styled('button', {
 
 type AsType = React.ComponentType<any> | 'button' | 'a' | undefined;
 
-export type ButtonProps<As extends AsType = undefined> = Omit<
-  ComponentProps<typeof ButtonIcon>,
+type IconButtonProps<As extends AsType = undefined> = Omit<
+  ComponentProps<typeof StyledButton>,
   'css' | 'as'
 > &
   Omit<React.HTMLProps<HTMLLinkElement>, 'size' | 'css' | 'as' | 'icon'> &
@@ -31,14 +31,19 @@ export type ButtonProps<As extends AsType = undefined> = Omit<
     ? Omit<ComponentProps<As>, 'as'>
     : {}) & {
     as?: As;
+  } & {
+    icon: IconName;
+    label: string;
   };
 
-export function CloseButton<As extends AsType = undefined>(
-  props: ButtonProps<As>
-) {
+export function IconButton<As extends AsType = undefined>({
+  icon,
+  label,
+  ...props
+}: IconButtonProps<As>) {
   return (
-    <ButtonIcon {...props} aria-label="Retour">
-      <Icon name="close" />
-    </ButtonIcon>
+    <StyledButton {...props} aria-label={label}>
+      <Icon name={icon} />
+    </StyledButton>
   );
 }

@@ -7,6 +7,7 @@ import React, {
   useState,
 } from 'react';
 import { decrypt, ENCRYPTED_CALENDAR } from '../utils/encryption';
+import { isLocalGiftOpen, setLocalGiftOpen } from '../utils/localData';
 import { CalendarEntry } from './calendar';
 import { Effects, GIFT_DAYS } from './effects';
 
@@ -59,18 +60,20 @@ export const StoreProvider: FunctionComponent<Props> = ({ children }) => {
         ...values,
         [gift.effect]: {
           enabled: false,
-          opened: isDayUnlocked(gift.day) && !isToday(gift.day),
+          opened: isDayUnlocked(gift.day) && isLocalGiftOpen(gift.effect),
         } as EffectState,
       }),
       {} as Store['effects']
     )
   );
 
-  const openEffect = (name: Effects) =>
+  const openEffect = (name: Effects) => {
+    setLocalGiftOpen(name);
     setEffects((values) => ({
       ...values,
-      [name]: { ...values[name], open: true },
+      [name]: { ...values[name], opened: true },
     }));
+  };
 
   const toggleEffect = (name: Effects) => {
     setEffects((values) => ({
