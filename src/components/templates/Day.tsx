@@ -7,6 +7,8 @@ import { EntryImg } from '../atoms/EntryImg';
 import { EntryLink } from '../atoms/EntryLink';
 import { Main } from '../atoms/Main';
 import { EntryHeader } from '../molecules/EntryHeader';
+import ReactMarkdown from 'react-markdown';
+import { StyledMarkdown } from '../atoms/StyledMarkdown';
 
 export const Day = () => {
   const { id } = useParams();
@@ -40,7 +42,7 @@ export const Day = () => {
           {entry.videoUrl && <EmbeddedVideo url={entry.videoUrl} />}
           <Description>
             {entry.description.map((paragraph, idx) => (
-              <div key={idx}>{paragraph}</div>
+              <StyledMarkdown key={idx}>{paragraph}</StyledMarkdown>
             ))}
           </Description>
           {entry.link && (
