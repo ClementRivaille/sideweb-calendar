@@ -1,16 +1,32 @@
-import { CursorEffect, springyEmojiCursor } from 'cursor-effects';
+import {
+  CursorEffect,
+  emojiCursor,
+  fairyDustCursor,
+  springyEmojiCursor,
+} from 'cursor-effects';
 import { useEffect, useRef } from 'react';
 
-export const useCursorEffect = (enabled: boolean) => {
-  const effect = useRef<CursorEffect>();
+export enum CursorEffectType {
+  springyEmoji,
+  fairyDust,
+  emojisRain,
+}
+
+export const useCursorEffect = (enabled: boolean, type: CursorEffectType) => {
+  const effect = useRef<CursorEffect | null>();
 
   useEffect(() => {
     if (enabled && !effect.current) {
-      // effect.current = new emojiCursor({ emoji: ['⭐', '🌟', '✨'] });
-      effect.current = new springyEmojiCursor({ emoji: '🌲' }); // 🎄🌲
-      // effect.current = new fairyDustCursor();
+      if (type === CursorEffectType.emojisRain) {
+        effect.current = new emojiCursor({ emoji: ['⭐', '🌟', '✨'] });
+      } else if (type === CursorEffectType.springyEmoji) {
+        effect.current = new springyEmojiCursor({ emoji: '🌲' }); // 🎄🌲
+      } else if (type === CursorEffectType.fairyDust) {
+        effect.current = new fairyDustCursor();
+      }
     } else if (effect.current) {
       effect.current.destroy();
+      effect.current = null;
     }
   }, [enabled]);
 };

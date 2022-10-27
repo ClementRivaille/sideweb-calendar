@@ -1,13 +1,15 @@
 import React from 'react';
 import { useStore } from '../../model/store';
-import { useCursorEffect } from '../../utils/useCursorEffect';
+import { CursorEffectType, useCursorEffect } from '../../utils/useCursorEffect';
 import { Box } from '../atoms/Box';
 import { Snowflakes } from '../atoms/Snowflakes';
 
 export const EffectsLayer = () => {
   const { effects } = useStore();
 
-  useCursorEffect(effects.keychain.enabled);
+  useCursorEffect(effects.keychain.enabled, CursorEffectType.springyEmoji);
+  useCursorEffect(effects.sparkles.enabled, CursorEffectType.fairyDust);
+  useCursorEffect(effects.sparkles.enabled, CursorEffectType.emojisRain);
 
   return (
     <Box
