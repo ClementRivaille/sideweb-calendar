@@ -8,8 +8,8 @@ interface Props {
 
 export const Snowflakes = ({ enabled }: Props) => {
   useEffect(() => {
-    spawn_snow(200);
-    spawnSnowCSS(200);
+    spawn_snow(400);
+    spawnSnowCSS(400);
   }, []);
   return (
     <Box
