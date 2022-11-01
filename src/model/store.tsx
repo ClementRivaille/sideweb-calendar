@@ -11,8 +11,7 @@ import { isLocalGiftOpen, setLocalGiftOpen } from '../utils/localData';
 import { CalendarEntry } from './calendar';
 import { Effects, GIFT_DAYS } from './effects';
 
-// const TARGET_MONT = 11;
-const TARGET_MONT = 9;
+const TARGET_MONT = 11;
 
 interface EffectState {
   opened: boolean;
@@ -43,7 +42,7 @@ export const StoreProvider: FunctionComponent<Props> = ({ children }) => {
     const dayValue = parseInt(day, 10);
     if (!Object.keys(calendar).includes(day)) return false;
     if (![TARGET_MONT, TARGET_MONT - 1].includes(today.getMonth())) return true;
-    return today.getDate() >= dayValue;
+    return today.getMonth() == TARGET_MONT && today.getDate() >= dayValue;
   };
 
   const getDay = (day: string) =>
