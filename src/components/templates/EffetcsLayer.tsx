@@ -2,6 +2,7 @@ import React from 'react';
 import { useStore } from '../../model/store';
 import { CursorEffectType, useCursorEffect } from '../../utils/useCursorEffect';
 import { Box } from '../atoms/Box';
+import { ReindeerBackground } from '../atoms/ReindeerBackground';
 import { Snowflakes } from '../atoms/Snowflakes';
 import { LightsEffect } from '../molecules/LightsEffect';
 
@@ -18,6 +19,9 @@ export const EffectsLayer = () => {
         pointerEvents: 'none',
       }}
     >
+      {effects.background.opened && (
+        <ReindeerBackground enabled={effects.background.enabled} />
+      )}
       {effects.lights.opened && (
         <LightsEffect enabled={effects.lights.enabled} />
       )}
