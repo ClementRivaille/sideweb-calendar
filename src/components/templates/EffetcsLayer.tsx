@@ -3,6 +3,7 @@ import { useStore } from '../../model/store';
 import { CursorEffectType, useCursorEffect } from '../../utils/useCursorEffect';
 import { Box } from '../atoms/Box';
 import { Snowflakes } from '../atoms/Snowflakes';
+import { LightsEffect } from '../molecules/LightsEffect';
 
 export const EffectsLayer = () => {
   const { effects } = useStore();
@@ -17,6 +18,9 @@ export const EffectsLayer = () => {
         pointerEvents: 'none',
       }}
     >
+      {effects.lights.opened && (
+        <LightsEffect enabled={effects.lights.enabled} />
+      )}
       {effects.snow.opened && <Snowflakes enabled={effects.snow.enabled} />}
     </Box>
   );
