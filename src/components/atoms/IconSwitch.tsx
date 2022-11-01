@@ -5,6 +5,8 @@ import { Icon, IconName } from './Icons';
 
 const StyledCheckbox = styled('input', {
   position: 'absolute',
+  width: 0,
+  height: 0,
   opacity: 0,
 });
 
