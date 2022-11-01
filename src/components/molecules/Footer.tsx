@@ -23,9 +23,11 @@ const FooterContent = styled('div', {
   '@bp2': {
     flexDirection: 'row-reverse',
     justifyContent: 'space-between',
-    fontSize: '$6',
     '& img': {
       height: '$10',
+    },
+    '@bp3': {
+      fontSize: '$6',
     },
   },
 });
