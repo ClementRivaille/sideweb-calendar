@@ -8,6 +8,7 @@ const StyledCheckbox = styled('input', {
   width: 0,
   height: 0,
   opacity: 0,
+  margin: 0,
 });
 
 const StyledLabel = styled('label', {

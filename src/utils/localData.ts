@@ -15,6 +15,6 @@ export const setLocalGiftOpen = (name: Effects) => {
   try {
     localStorage.setItem(`${SAVE_KEY}/${name}`, 'opened');
   } catch (e) {
-    console.info('Unable to save local data on your browser');
+    console.info('%cUnable to save local data on your browser', 'color: red');
   }
 };

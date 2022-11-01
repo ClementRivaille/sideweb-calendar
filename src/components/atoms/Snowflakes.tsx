@@ -9,7 +9,6 @@ interface Props {
 
 export const Snowflakes = ({ enabled }: Props) => {
   useEffect(() => {
-    console.log(config.media.bp2);
     const amount = window.matchMedia(config.media.bp2).matches ? 400 : 200;
     spawn_snow(amount);
     spawnSnowCSS(amount);
