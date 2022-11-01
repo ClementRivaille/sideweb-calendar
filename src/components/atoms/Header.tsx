@@ -1,23 +1,26 @@
 import { keyframes, styled } from '../../style/stitches.config';
 
-const wave = keyframes({
+const waveSm = keyframes({
   '0%': {
     transform: 'translateY(-4px)',
-    '@bp2': {
-      transform: 'translateY(-6px)',
-    },
   },
   '50%': {
     transform: 'translateY(4px)',
-    '@bp2': {
-      transform: 'translateY(6px)',
-    },
   },
   '100%': {
     transform: 'translateY(-4px)',
-    '@bp2': {
-      transform: 'translateY(-6px)',
-    },
+  },
+});
+
+const waveLg = keyframes({
+  '0%': {
+    transform: 'translateY(-6px)',
+  },
+  '50%': {
+    transform: 'translateY(6px)',
+  },
+  '100%': {
+    transform: 'translateY(-6px)',
   },
 });
 
@@ -34,9 +37,10 @@ export const Header = styled('h1', {
         fontSize: '$8',
         color: '$white',
         textShadow: '7px 7px 4px black',
-        animation: `${wave} 3s infinite ease-in-out`,
+        animation: `${waveSm} 3s infinite ease-in-out`,
         '@bp2': {
           fontSize: '$9',
+          animationName: `${waveLg}`,
         },
         '@bp3': {
           marginBottom: '$5',

@@ -24,22 +24,24 @@ const COLORS: { [key in LightColors]: string } = {
   white: '#3bfeff',
 };
 
-const LightAnimation = keyframes({
+const lightAnimationSm = keyframes({
   '0%': {
     boxShadow: '0 0 10vh 10vh $$lightColor',
     opacity: 0.5,
-    '@bp2': {
-      opacity: 0.6,
-      boxShadow: '0 0 10vw 10vw $$lightColor',
-    },
   },
   '100%': {
     boxShadow: '0 0 20vh 20vh $$lightColor',
     opacity: 0.6,
-    '@bp2': {
-      opacity: 0.7,
-      boxShadow: '0 0 25vw 25vw $$lightColor',
-    },
+  },
+});
+const lightAnimationLg = keyframes({
+  '0%': {
+    opacity: 0.5,
+    boxShadow: '0 0 9vw 9vw $$lightColor',
+  },
+  '100%': {
+    opacity: 0.6,
+    boxShadow: '0 0 14vw 14vw $$lightColor',
   },
 });
 
@@ -51,10 +53,13 @@ const StyledLight = styled('div', {
 
   $$lightColor: '$colors$white',
   background: '$$lightColor',
-  animationName: `${LightAnimation}`,
+  animationName: `${lightAnimationSm}`,
   animationIterationCount: 'infinite',
   animationDirection: 'alternate',
   animationFillMode: 'both',
+  '@bp2': {
+    animationName: `${lightAnimationLg}`,
+  },
   variants: {
     color: COLOR_KEYS.reduce(
       (variants, key) => ({
