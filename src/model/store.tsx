@@ -11,7 +11,7 @@ import { isLocalGiftOpen, setLocalGiftOpen } from '../utils/localData';
 import { CalendarEntry } from './calendar';
 import { Effects, GIFT_DAYS } from './effects';
 
-const TARGET_MONT = 11;
+const TARGET_MONT = 1;
 
 interface EffectState {
   opened: boolean;

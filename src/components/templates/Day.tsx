@@ -7,7 +7,6 @@ import { EntryImg } from '../atoms/EntryImg';
 import { EntryLink } from '../atoms/EntryLink';
 import { Main } from '../atoms/Main';
 import { EntryHeader } from '../molecules/EntryHeader';
-import ReactMarkdown from 'react-markdown';
 import { StyledMarkdown } from '../atoms/StyledMarkdown';
 
 export const Day = () => {
