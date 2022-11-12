@@ -1,6 +1,7 @@
 import React from 'react';
 import { useStore } from '../../model/store';
 import { CursorEffectType, useCursorEffect } from '../../utils/useCursorEffect';
+import { useOrchestra } from '../../utils/useOrchestra';
 import { Box } from '../atoms/Box';
 import { ReindeerBackground } from '../atoms/ReindeerBackground';
 import { Snowflakes } from '../atoms/Snowflakes';
@@ -12,6 +13,8 @@ export const EffectsLayer = () => {
   useCursorEffect(effects.keychain.enabled, CursorEffectType.springyEmoji);
   useCursorEffect(effects.sparkles.enabled, CursorEffectType.fairyDust);
   useCursorEffect(effects.sparkles.enabled, CursorEffectType.emojisRain);
+
+  useOrchestra();
 
   return (
     <Box
