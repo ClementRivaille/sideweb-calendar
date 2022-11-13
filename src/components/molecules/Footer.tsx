@@ -43,9 +43,9 @@ export const Footer = () => (
         Side Web
       </a>{' '}
       {`est une série de vidéos consacrée à la fan-création sur le web. Son but
-      est de mettre en avanr la création web amateure, en la revendiquant comme partie intégrante de notre culture. Toutes les œuvres, qu'elles soient méconnues, dérivées, ou même médiocres, méritent d'être applaudies ! Side Web est aussi un hommage nostalgique au web des années 2000, et une réflexion sur son évolution depuis.`}
+      est de mettre en avant la création web amateure, en la revendiquant comme partie intégrante de notre culture. Toutes les œuvres, qu'elles soient méconnues, dérivées, ou même médiocres, méritent d'être applaudies ! Side Web est aussi un hommage nostalgique au web des années 2000, et une réflexion sur son évolution depuis.`}
       <br />
-      {`Considérez ce calendrier est une sorte de produit dérivé. Une collection de diverses œuvres du web, aussi bien des fan-création que des contenus originaux. À défaut d'y consacrer des vidéos, voilà une occasion de les commémorer. J'espère que vous y découvrirez aussi bien des souvenirs nostalgiques que des découvertes intéressantes !`}
+      {`Considérez ce calendrier comme une sorte de produit dérivé. Une collection de diverses œuvres du web, aussi bien des fan-créations que des contenus originaux. À défaut d'y consacrer des vidéos, voilà une occasion de les commémorer. J'espère que vous y découvrirez aussi bien des souvenirs nostalgiques que des découvertes intéressantes !`}
     </div>
     <img src="/img/sideweb-logo.png" alt="Side web" />
   </FooterContent>
