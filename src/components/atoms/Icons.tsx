@@ -7,6 +7,8 @@ import { ReactComponent as LightSvg } from '../../assets/icons/light.svg';
 import { ReactComponent as ReindeerSvg } from '../../assets/icons/reindeer.svg';
 import { ReactComponent as SnowflakeSvg } from '../../assets/icons/snowflake.svg';
 import { ReactComponent as StarsSvg } from '../../assets/icons/stars.svg';
+import { ReactComponent as SoundOnSvg } from '../../assets/icons/volume.svg';
+import { ReactComponent as SoundOffSvg } from '../../assets/icons/volume-off.svg';
 import { styled } from '../../style/stitches.config';
 
 export type IconName =
@@ -16,7 +18,9 @@ export type IconName =
   | 'light'
   | 'reindeer'
   | 'snowflake'
-  | 'stars';
+  | 'stars'
+  | 'soundOn'
+  | 'soundOff';
 
 const buildStyledIcon = (icon: ComponentType<SVGProps<SVGSVGElement>>) =>
   styled(icon, {
@@ -38,6 +42,8 @@ const iconsMap: {
   reindeer: buildStyledIcon(ReindeerSvg),
   snowflake: buildStyledIcon(SnowflakeSvg),
   stars: buildStyledIcon(StarsSvg),
+  soundOn: buildStyledIcon(SoundOnSvg),
+  soundOff: buildStyledIcon(SoundOffSvg),
 };
 
 type Props = {

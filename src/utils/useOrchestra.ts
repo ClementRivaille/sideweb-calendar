@@ -40,7 +40,7 @@ export const INSTRUMENT_FOR_EFFECT: { [key in Effects]: Instruments } = {
 };
 
 export const useOrchestra = () => {
-  const { effects } = useStore();
+  const { effects, mute } = useStore();
 
   const orchestra = useRef(new Orchestre(108));
   const [loaded, setLoaded] = useState(false);
@@ -128,4 +128,8 @@ export const useOrchestra = () => {
       }
     });
   }, [effects, enableInstrument, disableInstrument]);
+
+  useEffect(() => {
+    orchestra.current.master.gain.setTargetAtTime(mute ? 0 : 1, 0, 0.2);
+  }, [mute]);
 };

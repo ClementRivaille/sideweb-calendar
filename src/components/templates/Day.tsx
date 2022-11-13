@@ -16,7 +16,7 @@ export const Day = () => {
 
   const entry = useMemo(() => {
     return (id && getDay(id)) || null;
-  }, [id]);
+  }, [id, getDay]);
 
   useEffect(() => {
     if (id && (!entry || !isDayUnlocked(id))) {

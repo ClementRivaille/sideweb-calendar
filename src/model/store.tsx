@@ -6,12 +6,15 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { decrypt, ENCRYPTED_CALENDAR } from '../utils/encryption';
+import {
+  calendar,
+  isDayUnlocked,
+  getDay,
+  isToday,
+} from '../utils/calendarEntries';
 import { isLocalGiftOpen, setLocalGiftOpen } from '../utils/localData';
 import { CalendarEntry } from './calendar';
 import { Effects, GIFT_DAYS } from './effects';
-
-const TARGET_MONT = 1;
 
 interface EffectState {
   opened: boolean;
@@ -20,12 +23,14 @@ interface EffectState {
 interface Store {
   days: string[];
   effects: { [key in Effects]: EffectState };
+  mute: boolean;
   isDayUnlocked: (day: string) => boolean;
   isToday: (day: string) => boolean;
   hasGift: (day: string) => boolean;
   getDay: (day: string) => CalendarEntry | undefined;
   openEffect: (effect: Effects) => void;
   toggleEffect: (effect: Effects) => void;
+  setMute: (value: boolean) => void;
 }
 
 const StoreContext = createContext<Store>({} as Store);
@@ -34,25 +39,9 @@ interface Props {
   children: ReactNode;
 }
 
+const hasGift = (day: string) => GIFT_DAYS.some((gift) => gift.day === day);
+
 export const StoreProvider: FunctionComponent<Props> = ({ children }) => {
-  const today = new Date();
-  const calendar = decrypt(ENCRYPTED_CALENDAR);
-
-  const isDayUnlocked = (day: string) => {
-    const dayValue = parseInt(day, 10);
-    if (!Object.keys(calendar).includes(day)) return false;
-    if (![TARGET_MONT, TARGET_MONT - 1].includes(today.getMonth())) return true;
-    return today.getMonth() == TARGET_MONT && today.getDate() >= dayValue;
-  };
-
-  const getDay = (day: string) =>
-    isDayUnlocked(day) ? calendar[day] : undefined;
-
-  const isToday = (day: string) =>
-    TARGET_MONT === today.getMonth() && day === `${today.getDate()}`;
-
-  const hasGift = (day: string) => GIFT_DAYS.some((gift) => gift.day === day);
-
   const [effects, setEffects] = useState<Store['effects']>(
     GIFT_DAYS.reduce(
       (values, gift) => ({
@@ -81,18 +70,22 @@ export const StoreProvider: FunctionComponent<Props> = ({ children }) => {
     }));
   };
 
+  const [mute, setMute] = useState(false);
+
   const store = useMemo<Store>(
     () => ({
       days: Object.keys(calendar),
       effects,
+      mute,
       isDayUnlocked,
       getDay,
       isToday,
       hasGift,
       openEffect,
       toggleEffect,
+      setMute,
     }),
-    [effects]
+    [effects, mute]
   );
 
   return (
