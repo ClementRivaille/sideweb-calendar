@@ -15,9 +15,10 @@ jobs:
         with:
           node-version: '14.x'
       - name: Install
+        env:
+          BASE_URL: /sideweb-calendar/
         run: |
           npm install
-          BASE_URL="/sideweb-calendar/"
           npm run build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
