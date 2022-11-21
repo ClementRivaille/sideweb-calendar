@@ -1,18 +1,19 @@
+import config from '../config';
 import { globalCss } from './stitches.config';
 
 export const globalStyle = globalCss({
   '@font-face': [
     {
       fontFamily: 'sticker',
-      src: 'local("sticker"), url("/fonts/Sticker.ttf")',
+      src: `local("sticker"), url("${config.baseUrl}/fonts/Sticker.ttf")`,
     },
     {
       fontFamily: 'ataristocrat',
-      src: 'local("ataristocrat"), url("/fonts/ATARISTOCRAT.ttf")',
+      src: `local("ataristocrat"), url("${config.baseUrl}/fonts/ATARISTOCRAT.ttf")`,
     },
     {
       fontFamily: 'ldcBlack',
-      src: 'local("ldcBlack"), url("/fonts/ldcBlackRound.ttf")',
+      src: `local("ldcBlack"), url("${config.baseUrl}/fonts/ldcBlackRound.ttf")`,
     },
   ],
   body: {

@@ -52,31 +52,31 @@ export const useOrchestra = () => {
       {
         name: Instruments.piano,
         absolute: true,
-        url: `${config.baseUrl}music/piano.ogg`,
+        url: `${config.baseUrl}/music/piano.ogg`,
         length: 4 * 16,
       },
       {
         name: Instruments.guitar,
         absolute: true,
-        url: `${config.baseUrl}music/guitar.ogg`,
+        url: `${config.baseUrl}/music/guitar.ogg`,
         length: 4 * 16,
       },
       {
         name: Instruments.marimba,
         absolute: true,
-        url: `${config.baseUrl}music/marimba.ogg`,
+        url: `${config.baseUrl}/music/marimba.ogg`,
         length: 4 * 16,
       },
       {
         name: Instruments.strings,
         absolute: true,
-        url: `${config.baseUrl}music/strings.ogg`,
+        url: `${config.baseUrl}/music/strings.ogg`,
         length: 4 * 16,
       },
       {
         name: Instruments.bells,
         absolute: true,
-        url: `${config.baseUrl}music/bells.ogg`,
+        url: `${config.baseUrl}/music/bells.ogg`,
         length: 4 * 16,
       },
     ]);

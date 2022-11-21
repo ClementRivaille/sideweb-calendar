@@ -8,6 +8,7 @@ import { EntryLink } from '../atoms/EntryLink';
 import { Main } from '../atoms/Main';
 import { EntryHeader } from '../molecules/EntryHeader';
 import { StyledMarkdown } from '../atoms/StyledMarkdown';
+import config from '../../config';
 
 export const Day = () => {
   const { id } = useParams();
@@ -37,7 +38,9 @@ export const Day = () => {
       {entry && (
         <>
           <EntryHeader>{entry.title}</EntryHeader>
-          {entry.imgUrl && <EntryImg src={entry.imgUrl} alt="kitties" />}
+          {entry.imgUrl && (
+            <EntryImg src={`${config.baseUrl}${entry.imgUrl}`} alt="kitties" />
+          )}
           {entry.videoUrl && <EmbeddedVideo url={entry.videoUrl} />}
           <Description>
             {entry.description.map((paragraph, idx) => (

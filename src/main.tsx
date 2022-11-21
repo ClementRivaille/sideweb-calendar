@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import App from './App';
 import { globalStyle } from './style/global';
 import 'what-input';
+import config from './config';
 
 globalStyle();
 
@@ -23,8 +24,8 @@ console.info(
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter basename={`${config.baseUrl}`}>
       <App />
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );
