@@ -1,6 +1,6 @@
 import { decrypt, ENCRYPTED_CALENDAR } from './encryption';
 
-const TARGET_MONT = 1;
+const TARGET_MONT = 11;
 
 const today = new Date();
 export const calendar = decrypt(ENCRYPTED_CALENDAR);
