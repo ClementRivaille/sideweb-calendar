@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Orchestre, PlayerOptions } from 'orchestre-js';
 import { Effects } from '../model/effects';
 import { useStore } from '../model/store';
+import config from '../config';
 
 export enum Instruments {
   piano = 'piano',
@@ -51,31 +52,31 @@ export const useOrchestra = () => {
       {
         name: Instruments.piano,
         absolute: true,
-        url: '/music/piano.ogg',
+        url: `${config.baseUrl}music/piano.ogg`,
         length: 4 * 16,
       },
       {
         name: Instruments.guitar,
         absolute: true,
-        url: '/music/guitar.ogg',
+        url: `${config.baseUrl}music/guitar.ogg`,
         length: 4 * 16,
       },
       {
         name: Instruments.marimba,
         absolute: true,
-        url: '/music/marimba.ogg',
+        url: `${config.baseUrl}music/marimba.ogg`,
         length: 4 * 16,
       },
       {
         name: Instruments.strings,
         absolute: true,
-        url: '/music/strings.ogg',
+        url: `${config.baseUrl}music/strings.ogg`,
         length: 4 * 16,
       },
       {
         name: Instruments.bells,
         absolute: true,
-        url: '/music/bells.ogg',
+        url: `${config.baseUrl}music/bells.ogg`,
         length: 4 * 16,
       },
     ]);
