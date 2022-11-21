@@ -1,5 +1,6 @@
 /* eslint-disable no-irregular-whitespace */
 import React from 'react';
+import config from '../../config';
 import { styled } from '../../style/stitches.config';
 
 const FooterContent = styled('div', {
@@ -47,6 +48,6 @@ export const Footer = () => (
       <br />
       {`Considérez ce calendrier comme une sorte de produit dérivé. Une collection de diverses œuvres du web, aussi bien des fan-créations que des contenus originaux. À défaut d'y consacrer des vidéos, voilà une occasion de les commémorer. J'espère que vous y découvrirez aussi bien des souvenirs nostalgiques que des découvertes intéressantes !`}
     </div>
-    <img src="/img/sideweb-logo.png" alt="Side web" />
+    <img src={`${config.baseUrl}/img/sideweb-logo.png`} alt="Side web" />
   </FooterContent>
 );

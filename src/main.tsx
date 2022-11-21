@@ -24,7 +24,7 @@ console.info(
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <HashRouter basename={`${config.baseUrl}`}>
+    <HashRouter>
       <App />
     </HashRouter>
   </React.StrictMode>
