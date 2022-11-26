@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Orchestre, PlayerOptions } from 'orchestre-js';
-import { Effects } from '../model/effects';
+import { Orchestre, PlayerConfiguration, PlayerOptions } from 'orchestre-js';
+import { Effects, GIFT_DAYS } from '../model/effects';
 import { useStore } from '../model/store';
 import config from '../config';
+import { isDayUnlocked } from './calendarEntries';
 
 export enum Instruments {
   piano = 'piano',
@@ -40,46 +41,68 @@ export const INSTRUMENT_FOR_EFFECT: { [key in Effects]: Instruments } = {
   [Effects.sparkles]: Instruments.bells,
 };
 
+const INSTRUMENTS_CONFIGS: PlayerConfiguration[] = [
+  {
+    name: Instruments.piano,
+    absolute: true,
+    url: `${config.baseUrl}/music/piano.ogg`,
+    length: 4 * 16,
+  },
+  {
+    name: Instruments.guitar,
+    absolute: true,
+    url: `${config.baseUrl}/music/guitar.ogg`,
+    length: 4 * 16,
+  },
+  {
+    name: Instruments.marimba,
+    absolute: true,
+    url: `${config.baseUrl}/music/marimba.ogg`,
+    length: 4 * 16,
+  },
+  {
+    name: Instruments.strings,
+    absolute: true,
+    url: `${config.baseUrl}/music/strings.ogg`,
+    length: 4 * 16,
+  },
+  {
+    name: Instruments.bells,
+    absolute: true,
+    url: `${config.baseUrl}/music/bells.ogg`,
+    length: 4 * 16,
+  },
+];
+
 export const useOrchestra = () => {
   const { effects, mute } = useStore();
 
   const orchestra = useRef(new Orchestre(108));
   const [loaded, setLoaded] = useState(false);
   const [instrumentOnStart, setInstrumentOnStart] = useState<Instruments[]>([]);
+  const [loadedInstruments, setLoadedInstruments] = useState<Instruments[]>([]);
 
   const initOrchestra = async () => {
-    await orchestra.current.addPlayers([
-      {
-        name: Instruments.piano,
-        absolute: true,
-        url: `${config.baseUrl}/music/piano.ogg`,
-        length: 4 * 16,
-      },
-      {
-        name: Instruments.guitar,
-        absolute: true,
-        url: `${config.baseUrl}/music/guitar.ogg`,
-        length: 4 * 16,
-      },
-      {
-        name: Instruments.marimba,
-        absolute: true,
-        url: `${config.baseUrl}/music/marimba.ogg`,
-        length: 4 * 16,
-      },
-      {
-        name: Instruments.strings,
-        absolute: true,
-        url: `${config.baseUrl}/music/strings.ogg`,
-        length: 4 * 16,
-      },
-      {
-        name: Instruments.bells,
-        absolute: true,
-        url: `${config.baseUrl}/music/bells.ogg`,
-        length: 4 * 16,
-      },
-    ]);
+    const players: Promise<void>[] = [];
+    const instruments: Instruments[] = [];
+    INSTRUMENTS_CONFIGS.forEach((player) => {
+      const gift = GIFT_DAYS.find(
+        ({ effect }) => INSTRUMENT_FOR_EFFECT[effect] === player.name
+      );
+      if (gift && isDayUnlocked(gift.day)) {
+        players.push(
+          orchestra.current.addPlayer(
+            player.name,
+            player.url,
+            player.length,
+            true
+          )
+        );
+        instruments.push(player.name as Instruments);
+      }
+    });
+    setLoadedInstruments([...new Set(instruments)]);
+    await Promise.all(players);
     setLoaded(true);
   };
 
@@ -122,13 +145,16 @@ export const useOrchestra = () => {
 
   useEffect(() => {
     Object.entries(effects).forEach(([effect, state]) => {
-      if (state.enabled) {
-        enableInstrument(INSTRUMENT_FOR_EFFECT[effect as Effects]);
-      } else {
-        disableInstrument(INSTRUMENT_FOR_EFFECT[effect as Effects]);
+      const instrument = INSTRUMENT_FOR_EFFECT[effect as Effects];
+      if (loadedInstruments.includes(instrument)) {
+        if (state.enabled) {
+          enableInstrument(instrument);
+        } else {
+          disableInstrument(instrument);
+        }
       }
     });
-  }, [effects, enableInstrument, disableInstrument]);
+  }, [effects, loadedInstruments, enableInstrument, disableInstrument]);
 
   useEffect(() => {
     orchestra.current.master.gain.setTargetAtTime(mute ? 0 : 1, 0, 0.2);
