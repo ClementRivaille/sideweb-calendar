@@ -64,6 +64,9 @@ export const StoreProvider: FunctionComponent<Props> = ({ children }) => {
   };
 
   const toggleEffect = (name: Effects) => {
+    const gift = GIFT_DAYS.find(({ effect }) => effect === name);
+    if (!gift || !isDayUnlocked(gift.day)) return;
+
     setEffects((values) => ({
       ...values,
       [name]: { ...values[name], enabled: !values[name].enabled },

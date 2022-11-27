@@ -10,9 +10,18 @@ import { LightsEffect } from '../molecules/LightsEffect';
 export const EffectsLayer = () => {
   const { effects } = useStore();
 
-  useCursorEffect(effects.keychain.enabled, CursorEffectType.springyEmoji);
-  useCursorEffect(effects.sparkles.enabled, CursorEffectType.fairyDust);
-  useCursorEffect(effects.sparkles.enabled, CursorEffectType.emojisRain);
+  useCursorEffect(
+    effects.keychain.opened && effects.keychain.enabled,
+    CursorEffectType.springyEmoji
+  );
+  useCursorEffect(
+    effects.sparkles.opened && effects.sparkles.enabled,
+    CursorEffectType.fairyDust
+  );
+  useCursorEffect(
+    effects.sparkles.opened && effects.sparkles.enabled,
+    CursorEffectType.emojisRain
+  );
 
   useOrchestra();
 
