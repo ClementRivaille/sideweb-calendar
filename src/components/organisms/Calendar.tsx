@@ -11,14 +11,19 @@ export const Calendar: FunctionComponent = () => {
       css={{
         display: 'flex',
         flexWrap: 'wrap',
-        maxWidth: '100%',
+        maxWidth: 'min(100%, 420px)',
         justifyContent: 'center',
         gap: '$3',
         '@bp1': {
           gap: '$3',
+          maxWidth: '100%',
+        },
+        '@bp2': {
+          maxWidth: '1000px',
         },
         '@bp3': {
           gap: '$5',
+          maxWidth: '1350px',
         },
       }}
     >
