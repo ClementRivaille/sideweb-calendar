@@ -14,11 +14,11 @@ console.info(
   'font-style: italic'
 );
 console.info(
-  `%cIf you succceeds, I'll be happy to know how you did it! But please, play the game fairly, and don't spoil the content to others. They'll certainly prefer to enjoy the surprise, so no need to be a Grinch. This is only a small hand-crafted website after all, let's keep the secret between us.`,
+  `%cIf you succeed, I'll be happy to know how you did it! But please, play the game fairly, and don't spoil the content to others. They'll certainly prefer to enjoy the surprise, so no need to be a Grinch. This is only a small hand-crafted website after all, let's keep the secret between us.`,
   'font-style: italic'
 );
 console.info(
-  `%cI'll also make its code open-source eventually. So if you want to know how this was made, keep in tune!`,
+  `%cDo you know that this app is actually open-source? If you want to know how it's made, you can explore it on my github, as well as my other projects: https://github.com/ClementRivaille.`,
   'font-style: italic'
 );
 
