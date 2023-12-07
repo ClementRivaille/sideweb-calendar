@@ -16,7 +16,7 @@ jobs:
           node-version: '14.x'
       - name: Install
         env:
-          BASE_URL: /sideweb-calendar/
+          BASE_URL: /
         run: |
           npm install
           npm run build
